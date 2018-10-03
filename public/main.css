@@ -1,0 +1,15 @@
+.navbar{
+    min-height: 5rem;
+    margin-bottom: 2rem;
+}
+.nav-item img{
+    max-height: 4rem;
+}
+.mt30{
+    margin-top: 8rem;
+}
+
+.progress{
+    margin-top:30%;
+    margin-bottom: 30%;
+}

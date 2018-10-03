@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<!--
+Copyright (c) 2016 Google Inc.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+<html>
+
+<head>
+  <meta charset=utf-8 />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Owners Court :: Central Security Registration</title>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="main.css">
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script>
+  <!-- Import and configure the Firebase SDK -->
+  <!-- These scripts are made available when the app is served or deployed on Firebase Hosting -->
+  <!-- If you do not serve/host your project using Firebase Hosting see https://firebase.google.com/docs/web/setup -->
+  <script src="/__/firebase/5.5.1/firebase-app.js"></script>
+  <script src="/__/firebase/5.5.1/firebase-auth.js"></script>
+  <script src="/__/firebase/init.js"></script>
+  <script src="app.js"></script>
+  
+</head>
+
+<body>
+
+  <div class="container">
+    <!-- Header section containing title -->
+    <nav class="navbar fixed-top navbar-light bg-light">
+      <a class="navbar-brand">Owners Court Central Security</a>
+      <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex hidden" id="userInfo">
+
+
+        <li class="nav-item">
+          <img src="" id="userImg" class="rounded-circle" />
+        </li>
+      </ul>
+      <form class="form-inline">
+        <button class="btn btn-primary btn-lg ml-3" type="button" id="quickstart-sign-out">Sign out</button>
+      </form>
+    </nav>
+    <main class="mt30">
+      <h1 class="mb-4">Registration</h1>
+      <!-- Container for the demo -->
+
+      <form novalidate>
+        <div class="card">
+          <div class="card-body">
+            <div class="form-group row">
+              <label for="usrName" class="col-sm-2 col-form-label">Name</label>
+              <div class="col-sm-10">
+                <input type="text" readonly class="form-control-plaintext" id="usrName" value="">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="usrEmail" class="col-sm-2 col-form-label">Email</label>
+              <div class="col-sm-10">
+                <input type="text" readonly class="form-control-plaintext" id="usrEmail" value="" required>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="usrMobile" class="col-sm-2 col-form-label">Mobile</label>
+              <div class="col-sm-10">
+                <input type="number" class="form-control" id="usrMobile" placeholder="Mobile" required>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="usrApartment" class="col-sm-2 col-form-label">Apartment</label>
+              <div class="col-sm-10">
+                <select class="form-control" id="usrApartment" required>
+                  <option value="">Choose Apartment</option>
+                  <option value="smaartForte">Smaart Forte</option>
+                  <option value="donataBliss">Donata Bliss</option>
+                  <option value="kapila">Kapila</option>
+                  <option value="leafyBlocks">Leafy Blocks</option>
+                </select>
+                <small id="usrApartmentHelpBlock" class="form-text text-muted">
+                  If your apartment/house not listed please send an email to <a href="mailto:nammaownerscourt@gmail.com"> nammaownerscourt@gmail.com</a>.
+                </small>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="usrFlat" class="col-sm-2 col-form-label">Flat Number</label>
+              <div class="col-sm-10">
+                <input type="number" class="form-control" id="usrFlat" placeholder="Flat Number" required>
+              </div>
+            </div>
+          </div>
+        </div>
+        <h2 class="mt-4 mb-4">Vehicle Details</h2>
+        <div class="card">
+          <div class="card-body">
+            <div class="form-row">
+              <div class="form-group col-sm-6">
+                <label for="usrVehicle_1_type" class="col-form-label">Vehicle Type</label>
+                <select class="form-control" id="usrVehicle_1_type" required>
+                  <option value="">Choose Vehicle </option>
+                  <option value="4wheeler">4 Wheeler</option>
+                  <option value="2wheeler">2 Wheeler</option>
+                </select>
+              </div>
+              <div class="form-group col-sm-6">
+                <label for="usrVehicle_1_number" class="col-form-label">Vehicle Number</label>
+                <input type="number" class="form-control" id="usrVehicle_1_number" placeholder="Vehicle Number" required>
+              </div>
+            </div>
+            <!-- Vehicle1-->
+            <div class="form-row">
+                <div class="form-group col-sm-6">
+                  <label for="usrVehicle_1_type" class="col-form-label">Vehicle Type</label>
+                  <select class="form-control" id="usrVehicle_2_type" required>
+                    <option value="">Choose Vehicle </option>
+                    <option value="4wheeler">4 Wheeler</option>
+                    <option value="2wheeler">2 Wheeler</option>
+                  </select>
+                </div>
+                <div class="form-group col-sm-6">
+                  <label for="usrVehicle_1_number" class="col-form-label">Vehicle Number</label>
+                  <input type="number" class="form-control" id="usrVehicle_2_number" placeholder="Vehicle Number" required>
+                </div>
+              </div>
+              <!-- Vehicle2 -->
+              <div class="form-row">
+                  <div class="form-group col-sm-6">
+                    <label for="usrVehicle_1_type" class="col-form-label">Vehicle Type</label>
+                    <select class="form-control" id="usrVehicle_3_type">
+                      <option value="">Choose Vehicle </option>
+                      <option value="4wheeler">4 Wheeler</option>
+                      <option value="2wheeler">2 Wheeler</option>
+                    </select>
+                  </div>
+                  <div class="form-group col-sm-6">
+                    <label for="usrVehicle_1_number" class="col-form-label">Vehicle Number</label>
+                    <input type="number" class="form-control" id="usrVehicle_3_number" placeholder="Vehicle Number">
+                  </div>
+                </div>
+                <!-- Vehicle3 -->
+                <div class="form-row">
+                    <div class="form-group col-sm-6">
+                      <label for="usrVehicle_1_type" class="col-form-label">Vehicle Type</label>
+                      <select class="form-control" id="usrVehicle_4_type">
+                        <option value="">Choose Vehicle </option>
+                        <option value="4wheeler">4 Wheeler</option>
+                        <option value="2wheeler">2 Wheeler</option>
+                      </select>
+                    </div>
+                    <div class="form-group col-sm-6">
+                      <label for="usrVehicle_1_number" class="col-form-label">Vehicle Number</label>
+                      <input type="number" class="form-control" id="usrVehicle_4_number" placeholder="Vehicle Number">
+                    </div>
+                  </div>
+                  <!-- Vehicle4 -->
+                  <div class="form-row">
+                      <div class="form-group col-sm-6">
+                        <label for="usrVehicle_1_type" class="col-form-label">Vehicle Type</label>
+                        <select class="form-control" id="usrVehicle_5_type">
+                          <option value="">Choose Vehicle </option>
+                          <option value="4wheeler">4 Wheeler</option>
+                          <option value="2wheeler">2 Wheeler</option>
+                        </select>
+                      </div>
+                      <div class="form-group col-sm-6">
+                        <label for="usrVehicle_1_number" class="col-form-label">Vehicle Number</label>
+                        <input type="number" class="form-control" id="usrVehicle_5_number" placeholder="Vehicle Number">
+                      </div>
+                    </div>
+                    <!-- Vehicle5-->
+                    <div class="form-row">
+                        <div class="form-group col-sm-6">
+                          <label for="usrVehicle_1_type" class="col-form-label">Vehicle Type</label>
+                          <select class="form-control" id="usrVehicle_5_type">
+                            <option value="">Choose Vehicle </option>
+                            <option value="4wheeler">4 Wheeler</option>
+                            <option value="2wheeler">2 Wheeler</option>
+                          </select>
+                        </div>
+                        <div class="form-group col-sm-6">
+                          <label for="usrVehicle_1_number" class="col-form-label">Vehicle Number</label>
+                          <input type="number" class="form-control" id="usrVehicle_5_number" placeholder="Vehicle Number">
+                        </div>
+                      </div>
+                      <!-- Vehicle6-->
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg mt-4">Submit</button>
+      </form>
+   
+          <!-- Container where we'll display the user details 
+          <div class="quickstart-user-details-container mt40">
+            Firebase sign-in status: <span id="quickstart-sign-in-status">Unknown</span>
+            <div>Firebase auth <code>currentUser</code> object value:</div>
+            <pre><code id="quickstart-account-details">null</code></pre>
+            <div>Google OAuth Access Token:</div>
+            <pre><code id="quickstart-oauthtoken">null</code></pre>
+          </div>-->
+      
+    </main>
+    <footer class="text-center mt-4 mb-4">
+          Copyrights 2018-2019
+    </footer>
+  </div>
+</body>
+
+</html>
